@@ -13,7 +13,7 @@ import "./jessie.css";
 
 export default function DnaPage() {
   return (
-    <div className="rr-page jessie">
+    <div className="rr-page jessie" id="top">
       <header className="rr-nav">
         <a className="rr-wordmark" href="/" aria-label="Roots and Road home">
           <span className="rr-wordmark-name">
@@ -23,7 +23,7 @@ export default function DnaPage() {
         </a>
         <nav aria-label="Primary">
           <a href="/">Home</a>
-          <a href="/journeys/jessie">Jessie&rsquo;s story</a>
+          <a href="/stories">All stories</a>
           <a className="rr-btn rr-btn-nav" href="/#discovery-call">
             Discovery call
           </a>
@@ -58,7 +58,7 @@ export default function DnaPage() {
               What a DNA surprise means
             </h1>
             <p>
-              <a className="rr-inline-link" href="/journeys/jessie">
+              <a className="rr-inline-link" href="/stories/jessie">
                 Part One told Jessie&rsquo;s story
               </a>{" "}
               — the beloved Nashville matriarch whose secrets waited a
@@ -250,6 +250,8 @@ export default function DnaPage() {
         </section>
       </main>
 
+      <a className="j-top" href="#top" aria-label="Back to top">↑</a>
+
       <footer className="rr-close">
         <h2>Weighing a test of your own?</h2>
         <p className="rr-close-sub">
@@ -260,9 +262,12 @@ export default function DnaPage() {
         <a className="rr-btn" href="/#discovery-call">
           Book a discovery call
         </a>
+        <p className="j-morelinks">
+          Continue the stories: <a href="/stories/jessie">Jessie</a> · <a href="/stories/mike">Mike</a> · <a href="/stories/bennetts">The Bennetts</a>
+        </p>
         <p className="rr-colophon">
           Roots &amp; Road · Identity Adventures ·{" "}
-          <a className="rr-inline-link" href="/journeys/jessie">
+          <a className="rr-inline-link" href="/stories/jessie">
             Read Part One: The secrets Jessie kept
           </a>
         </p>

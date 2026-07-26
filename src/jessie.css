@@ -18,13 +18,19 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.14;
+  opacity: 0.5;
 }
 
 .j-veil {
   position: absolute;
   inset: 0;
-  background: rgba(245, 240, 230, 0.5);
+  /* calm center, wash breathing at the margins */
+  background: radial-gradient(
+    ellipse 68% 80% at 50% 45%,
+    rgba(245, 240, 230, 0.86) 0%,
+    rgba(245, 240, 230, 0.62) 48%,
+    rgba(245, 240, 230, 0.1) 100%
+  );
 }
 
 .j-hero-inner {
@@ -367,4 +373,106 @@
   border-left: 3px solid var(--sand);
   padding-left: 0.9rem;
   margin: 1.8rem 0 0.5rem !important;
+}
+
+
+/* ---------------- Story-page navigation helpers ---------------- */
+.j-top {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--forest);
+  color: var(--parchment) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ui);
+  font-size: 1.2rem;
+  z-index: 50;
+  opacity: 0.82;
+  text-decoration: none;
+}
+
+.j-top:hover {
+  opacity: 1;
+}
+
+.j-morelinks {
+  font-family: var(--ui);
+  font-size: 0.82rem;
+  color: var(--stone);
+  margin: 1.2rem 0 0;
+}
+
+.j-morelinks a {
+  color: var(--ocean);
+  font-weight: 600;
+}
+
+
+/* ---------------- Document lightbox ---------------- */
+.jw-zoombtn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.jw-zoombtn img {
+  width: 100%;
+  display: block;
+}
+
+.jw-zoombtn:focus-visible {
+  outline: 2px solid var(--ocean);
+  outline-offset: 2px;
+}
+
+.j-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 34, 30, 0.9);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.2rem;
+  cursor: zoom-out;
+}
+
+.j-lightbox img {
+  max-width: min(1100px, 94vw);
+  max-height: 80vh;
+  object-fit: contain;
+  border: 6px solid var(--paper);
+  cursor: default;
+}
+
+.j-lightbox p {
+  font-family: var(--ui);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--parchment);
+  max-width: 700px;
+  text-align: center;
+  margin: 0.9rem 0 0;
+}
+
+.j-lightbox-close {
+  position: absolute;
+  top: 0.9rem;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  color: var(--parchment);
+  font-size: 2.2rem;
+  line-height: 1;
+  cursor: pointer;
 }

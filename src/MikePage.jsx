@@ -1,5 +1,7 @@
+import { useState } from "react";
 import "./homepage.css";
 import "./jessie.css";
+import Lightbox from "./Lightbox";
 
 /*
   Roots & Road — Case study: The Man Who Called Himself Mike
@@ -24,7 +26,7 @@ import "./jessie.css";
 
 const A = "/assets/mike";
 
-function Waypoint({ date, tbc, place, children, media, rotate }) {
+function Waypoint({ date, tbc, place, children, media, rotate, onZoom }) {
   return (
     <div className="jw">
       <div className="jw-marker">
@@ -38,7 +40,14 @@ function Waypoint({ date, tbc, place, children, media, rotate }) {
       <div className="jw-body">
         {media && (
           <figure className={`jw-media${rotate ? " jw-media-rotated" : ""}`}>
-            <img src={media.src} alt={media.alt} loading="lazy" />
+            <button
+              type="button"
+              className="jw-zoombtn"
+              onClick={() => onZoom && onZoom(media)}
+              aria-label="View this document larger"
+            >
+              <img src={media.src} alt={media.alt} loading="lazy" />
+            </button>
             {media.caption && <figcaption>{media.caption}</figcaption>}
           </figure>
         )}
@@ -49,8 +58,9 @@ function Waypoint({ date, tbc, place, children, media, rotate }) {
 }
 
 export default function MikePage() {
+  const [lightbox, setLightbox] = useState(null);
   return (
-    <div className="rr-page jessie">
+    <div className="rr-page jessie" id="top">
       <header className="rr-nav">
         <a className="rr-wordmark" href="/" aria-label="Roots and Road home">
           <span className="rr-wordmark-name">
@@ -60,7 +70,7 @@ export default function MikePage() {
         </a>
         <nav aria-label="Primary">
           <a href="/">Home</a>
-          <a href="/journeys/jessie">Jessie's story</a>
+          <a href="/stories">All stories</a>
           <a className="rr-btn rr-btn-nav" href="/#discovery-call">
             Discovery call
           </a>
@@ -291,7 +301,7 @@ export default function MikePage() {
         >
           <div className="j-route" aria-hidden="true" />
 
-          <Waypoint
+          <Waypoint onZoom={setLightbox}
             date="May 1937"
             place="Kansas City · Floral Hills"
             media={{
@@ -311,7 +321,7 @@ export default function MikePage() {
             </p>
           </Waypoint>
 
-          <Waypoint date="December 1936" place="Kansas City · Calvary Cemetery">
+          <Waypoint onZoom={setLightbox} date="December 1936" place="Kansas City · Calvary Cemetery">
             <h3>Six months earlier: Marie Theresa dies</h3>
             <p>
               Buried in consecrated Catholic ground, apart from Henry.
@@ -321,7 +331,7 @@ export default function MikePage() {
             </p>
           </Waypoint>
 
-          <Waypoint
+          <Waypoint onZoom={setLightbox}
             date="1931"
             place="Kansas City, Missouri"
             media={{
@@ -340,7 +350,7 @@ export default function MikePage() {
             </p>
           </Waypoint>
 
-          <Waypoint date="About 1908" place="Kansas City, Missouri">
+          <Waypoint onZoom={setLightbox} date="About 1908" place="Kansas City, Missouri">
             <h3>The Robesons condense out of the air</h3>
             <p>
               A salesman, his wife, and three children appear in the Kansas
@@ -350,7 +360,7 @@ export default function MikePage() {
             </p>
           </Waypoint>
 
-          <Waypoint date="October 31, 1907" place="Probably Joplin, Missouri">
+          <Waypoint onZoom={setLightbox} date="October 31, 1907" place="Probably Joplin, Missouri">
             <h3>Harry is born</h3>
             <p>
               No birth record exists — by choice, I believe. His middle
@@ -361,7 +371,7 @@ export default function MikePage() {
             </p>
           </Waypoint>
 
-          <Waypoint date="About 1900" place="Detroit → the road">
+          <Waypoint onZoom={setLightbox} date="About 1900" place="Detroit → the road">
             <h3>Henry John steps out of his life</h3>
             <p>
               At forty-seven, the superintendent, author, and Justice of
@@ -373,7 +383,7 @@ export default function MikePage() {
             </p>
           </Waypoint>
 
-          <Waypoint
+          <Waypoint onZoom={setLightbox}
             date="1889"
             place="Port Huron, Michigan"
             media={{
@@ -393,7 +403,7 @@ export default function MikePage() {
             </p>
           </Waypoint>
 
-          <Waypoint
+          <Waypoint onZoom={setLightbox}
             date="June 1880"
             place="Port Huron, Michigan"
             media={{
@@ -413,7 +423,7 @@ export default function MikePage() {
             </p>
           </Waypoint>
 
-          <Waypoint date="1868" place="Port Huron, Michigan">
+          <Waypoint onZoom={setLightbox} date="1868" place="Port Huron, Michigan">
             <h3>The family lands in Port Huron</h3>
             <p>
               David Robeson establishes the town's only ship chandlery —
@@ -460,7 +470,7 @@ export default function MikePage() {
         >
           <div className="j-route" aria-hidden="true" />
 
-          <Waypoint
+          <Waypoint onZoom={setLightbox}
             date="1882 · 1888"
             place="St. Catharines area, Ontario"
             media={{
@@ -480,7 +490,7 @@ export default function MikePage() {
             </p>
           </Waypoint>
 
-          <Waypoint date="April 20, 1853" place="Quebec City">
+          <Waypoint onZoom={setLightbox} date="April 20, 1853" place="Quebec City">
             <h3>Henry John is born</h3>
             <p>
               Baptized at St. Andrew's, where his parents married. He sang
@@ -489,7 +499,7 @@ export default function MikePage() {
             </p>
           </Waypoint>
 
-          <Waypoint date="May 29, 1852" place="St. Andrew's, Quebec City">
+          <Waypoint onZoom={setLightbox} date="May 29, 1852" place="St. Andrew's, Quebec City">
             <h3>David marries Ellen Martin</h3>
             <p>
               The bride history tried to erase, restored by a church
@@ -499,7 +509,7 @@ export default function MikePage() {
             </p>
           </Waypoint>
 
-          <Waypoint date="About 1832" place="Aberdeen → Quebec City">
+          <Waypoint onZoom={setLightbox} date="About 1832" place="Aberdeen → Quebec City">
             <h3>The crossing</h3>
             <p>
               In their late thirties, David and Mary uproot eight lives and
@@ -510,7 +520,7 @@ export default function MikePage() {
             </p>
           </Waypoint>
 
-          <Waypoint date="December 1822" place="Old St. Pancras, London">
+          <Waypoint onZoom={setLightbox} date="December 1822" place="Old St. Pancras, London">
             <h3>A baptism under a third spelling</h3>
             <p>
               For years I couldn't find David Jr.'s birth record, and
@@ -541,10 +551,24 @@ export default function MikePage() {
                 </p>
               </div>
               <figure className="j-zoom">
-                <img
-                  src={`${A}/banns-1814.jpg`}
-                  alt="Page from the Aberdeen Old Parochial Register recording the 1814 marriage of David Robertson and Mary Ronald"
-                />
+                <button
+                  type="button"
+                  className="jw-zoombtn"
+                  onClick={() =>
+                    setLightbox({
+                      src: `${A}/banns-1814.jpg`,
+                      alt: "Page from the Aberdeen Old Parochial Register recording the 1814 marriage of David Robertson and Mary Ronald",
+                      caption:
+                        "The Old Parochial Register, Aberdeen — 26 November 1814.",
+                    })
+                  }
+                  aria-label="View the register page larger"
+                >
+                  <img
+                    src={`${A}/banns-1814.jpg`}
+                    alt="Page from the Aberdeen Old Parochial Register recording the 1814 marriage of David Robertson and Mary Ronald"
+                  />
+                </button>
                 <figcaption>
                   The Old Parochial Register, Aberdeen — the marriage that
                   started all of it, under a name no one in the family
@@ -620,11 +644,24 @@ export default function MikePage() {
               className="jw-media jw-media-rotated"
               style={{ float: "right", width: "min(280px, 45%)", margin: "0 0 0.8rem 1.2rem" }}
             >
-              <img
-                src={`${A}/marie-theresa-fordon.jpg`}
-                alt="Hand-tinted portrait of Marie Theresa Fordon Robeson, an older woman with waved white hair and a beaded necklace"
-                loading="lazy"
-              />
+              <button
+                type="button"
+                className="jw-zoombtn"
+                onClick={() =>
+                  setLightbox({
+                    src: `${A}/marie-theresa-fordon.jpg`,
+                    alt: "Hand-tinted portrait of Marie Theresa Fordon Robeson",
+                    caption: "Marie Theresa Fordon, 1877–1936.",
+                  })
+                }
+                aria-label="View this portrait larger"
+              >
+                <img
+                  src={`${A}/marie-theresa-fordon.jpg`}
+                  alt="Hand-tinted portrait of Marie Theresa Fordon Robeson, an older woman with waved white hair and a beaded necklace"
+                  loading="lazy"
+                />
+              </button>
               <figcaption>
                 Marie Theresa Fordon, 1877–1936. The record of her birth in
                 Bingham, Michigan reads "Mary T. Fordan" — the family name
@@ -770,6 +807,10 @@ export default function MikePage() {
         </section>
       </main>
 
+      <Lightbox item={lightbox} onClose={() => setLightbox(null)} />
+
+      <a className="j-top" href="#top" aria-label="Back to top">↑</a>
+
       <footer className="rr-close">
         <h2>Every family is deeper than one story.</h2>
         <p className="rr-close-sub">
@@ -781,6 +822,9 @@ export default function MikePage() {
         <a className="rr-btn" href="/#discovery-call">
           Book a discovery call
         </a>
+        <p className="j-morelinks">
+          Continue the stories: <a href="/stories/jessie">Jessie</a> · <a href="/stories/bennetts">The Bennetts</a> · <a href="/dna-surprises">What a DNA surprise means</a>
+        </p>
         <p className="rr-colophon">
           Roots &amp; Road · Identity Adventures · Sources: The Kansas City
           Times 1937; U.S. censuses; Kansas City directories; Jenks,{" "}

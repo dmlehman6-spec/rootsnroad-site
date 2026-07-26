@@ -21,7 +21,7 @@ const DISCOVERY_URL = "#discovery-call"; // TODO: replace with scheduling link
 const journeys = [
   {
     id: "mike",
-    link: "/journeys/mike",
+    link: "/stories/mike",
     eyebrow: "Scotland · Quebec · Michigan · Kansas City",
     title: "The man who called himself Mike",
     teaser:
@@ -33,7 +33,7 @@ const journeys = [
   },
   {
     id: "jessie",
-    link: "/journeys/jessie",
+    link: "/stories/jessie",
     eyebrow: "Nashville, Tennessee",
     title: "The secrets Jessie kept",
     teaser:
@@ -47,6 +47,7 @@ const journeys = [
   },
   {
     id: "bennett",
+    link: "/stories/bennetts",
     eyebrow: "Colonial Virginia",
     title: "Now we are Bennetts",
     teaser:
@@ -55,7 +56,7 @@ const journeys = [
       src: "/assets/bennett-card.jpg",
       alt: "Handwritten colonial-era record page, browned with age",
     },
-    stamp: "Est. 1709",
+    stamp: "7th VA · 1777",
   },
 ];
 
@@ -82,7 +83,7 @@ const steps = [
           I&rsquo;ll search the databases, newspaper archives, genealogy
           compilations in books, old family files. If you choose DNA
           testing,{" "}
-          <a className="rr-inline-link" href="/journeys/jessie/what-it-means">
+          <a className="rr-inline-link" href="/dna-surprises">
             we can discuss what that adds to the overall picture
           </a>
           .
@@ -170,11 +171,12 @@ export default function HomePage() {
           <span className="rr-wordmark-tag">Identity Adventures</span>
         </a>
         <nav aria-label="Primary">
-          <a href="/story">Story</a>
-          <a href="/how-it-works">How it works</a>
+          <a href="/stories">Story</a>
+          <a href="#how-it-works">How it works</a>
           <a href="/journeys">Journeys</a>
+          {/* TODO: restore when pages are built:
           <a href="/services">Services</a>
-          <a href="/faq">FAQ</a>
+          <a href="/faq">FAQ</a> */}
           <a className="rr-btn rr-btn-nav" href={DISCOVERY_URL}>
             Discovery call
           </a>
@@ -209,7 +211,7 @@ export default function HomePage() {
         </section>
 
         {/* ---------------- Process (expandable) ---------------- */}
-        <section className="rr-process-wrap" aria-label="How Roots and Road works">
+        <section className="rr-process-wrap" id="how-it-works" aria-label="How Roots and Road works">
           <div className="rr-process">
             {steps.map((s) => (
               <button
@@ -247,7 +249,7 @@ export default function HomePage() {
         </section>
 
         {/* ---------------- Sample journeys ---------------- */}
-        <section className="rr-journeys">
+        <section className="rr-journeys" id="stories">
           <img
             className="rr-journeys-wash"
             src="/assets/journeys-wash.jpg"
@@ -256,7 +258,7 @@ export default function HomePage() {
           />
           <div className="rr-journeys-veil" aria-hidden="true" />
           <div className="rr-journeys-inner">
-            <p className="rr-eyebrow">Sample journeys</p>
+            <p className="rr-eyebrow">The stories</p>
             <h2 className="rr-section-title">
               Three mysteries. Three trails followed.
             </h2>
@@ -272,12 +274,23 @@ export default function HomePage() {
                     </span>
                   )}
                   <div className="rr-card-media">
-                    <img
-                      src={j.image.src}
-                      alt={j.image.alt}
-                      className={j.image.contain ? "rr-contain" : undefined}
-                      loading="lazy"
-                    />
+                    {j.link ? (
+                      <a href={j.link} aria-label={`Read: ${j.title}`}>
+                        <img
+                          src={j.image.src}
+                          alt={j.image.alt}
+                          className={j.image.contain ? "rr-contain" : undefined}
+                          loading="lazy"
+                        />
+                      </a>
+                    ) : (
+                      <img
+                        src={j.image.src}
+                        alt={j.image.alt}
+                        className={j.image.contain ? "rr-contain" : undefined}
+                        loading="lazy"
+                      />
+                    )}
                   </div>
                   <p className="rr-card-eyebrow">{j.eyebrow}</p>
                   <h3>{j.link ? <a href={j.link}>{j.title}</a> : j.title}</h3>
@@ -299,7 +312,7 @@ export default function HomePage() {
         </section>
 
         {/* ---------------- Story teaser ---------------- */}
-        <section className="rr-story">
+        <section className="rr-story" id="story">
           <div className="rr-story-photo rr-story-photo-img">
             <img
               src="/assets/donna.jpg"

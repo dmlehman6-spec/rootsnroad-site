@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./homepage.css";
 import "./jessie.css";
+import Lightbox from "./Lightbox";
 
 /*
   Roots & Road — Case study: The Secrets Jessie Kept
@@ -22,7 +23,7 @@ import "./jessie.css";
 
 const A = "/assets/jessie";
 
-function Waypoint({ date, tbc, place, children, media, rotate }) {
+function Waypoint({ date, tbc, place, children, media, rotate, onZoom }) {
   return (
     <div className="jw">
       <div className="jw-marker">
@@ -36,7 +37,14 @@ function Waypoint({ date, tbc, place, children, media, rotate }) {
       <div className="jw-body">
         {media && (
           <figure className={`jw-media${rotate ? " jw-media-rotated" : ""}`}>
-            <img src={media.src} alt={media.alt} loading="lazy" />
+            <button
+              type="button"
+              className="jw-zoombtn"
+              onClick={() => onZoom && onZoom(media)}
+              aria-label="View this document larger"
+            >
+              <img src={media.src} alt={media.alt} loading="lazy" />
+            </button>
             {media.caption && <figcaption>{media.caption}</figcaption>}
           </figure>
         )}
@@ -47,10 +55,11 @@ function Waypoint({ date, tbc, place, children, media, rotate }) {
 }
 
 export default function JessiePage() {
+  const [lightbox, setLightbox] = useState(null);
   const [zoomed, setZoomed] = useState(false);
 
   return (
-    <div className="rr-page jessie">
+    <div className="rr-page jessie" id="top">
       <header className="rr-nav">
         <a className="rr-wordmark" href="/" aria-label="Roots and Road home">
           <span className="rr-wordmark-name">
@@ -60,7 +69,7 @@ export default function JessiePage() {
         </a>
         <nav aria-label="Primary">
           <a href="/">Home</a>
-          <a href="/journeys">Journeys</a>
+          <a href="/stories">All stories</a>
           <a className="rr-btn rr-btn-nav" href="/#discovery-call">
             Discovery call
           </a>
@@ -146,7 +155,7 @@ export default function JessiePage() {
         <section className="j-timeline" aria-label="Jessie's documented timeline, part one">
           <div className="j-route" aria-hidden="true" />
 
-          <Waypoint date="August 23, 1881" place="Tennessee">
+          <Waypoint onZoom={setLightbox} date="August 23, 1881" place="Tennessee">
             <h3>Born</h3>
             <p>
               Jessie Byrd Raymer is born in Tennessee — a daughter after four
@@ -154,7 +163,7 @@ export default function JessiePage() {
             </p>
           </Waypoint>
 
-          <Waypoint
+          <Waypoint onZoom={setLightbox}
             date="January 8, 1898"
             place="Nashville"
             media={{
@@ -173,7 +182,7 @@ export default function JessiePage() {
             </p>
           </Waypoint>
 
-          <Waypoint
+          <Waypoint onZoom={setLightbox}
             date="December 14, 1898"
             place="Nashville"
             media={{
@@ -193,7 +202,7 @@ export default function JessiePage() {
             </p>
           </Waypoint>
 
-          <Waypoint
+          <Waypoint onZoom={setLightbox}
             date="May 1899"
             place="Nashville"
             media={{
@@ -211,7 +220,7 @@ export default function JessiePage() {
             </p>
           </Waypoint>
 
-          <Waypoint
+          <Waypoint onZoom={setLightbox}
             date="June 1900"
             place="Nashville, Ward 9"
             media={{
@@ -319,7 +328,7 @@ export default function JessiePage() {
         <section className="j-timeline" aria-label="Jessie's documented timeline, part two">
           <div className="j-route" aria-hidden="true" />
 
-          <Waypoint date="August 23, 1904" place="Evansville, Indiana">
+          <Waypoint onZoom={setLightbox} date="August 23, 1904" place="Evansville, Indiana">
             <h3>Joseph Henry &ldquo;Jody&rdquo; is born</h3>
             <p>
               Ten months after the withdrawn petition, Jessie&rsquo;s first
@@ -329,7 +338,7 @@ export default function JessiePage() {
             </p>
           </Waypoint>
 
-          <Waypoint date="August 30, 1907" place="Nashville">
+          <Waypoint onZoom={setLightbox} date="August 30, 1907" place="Nashville">
             <h3>Langford Raymer &ldquo;Bubbie&rdquo; is born</h3>
             <p>
               Her second son carries her family in both names — Langford,
@@ -338,7 +347,7 @@ export default function JessiePage() {
             </p>
           </Waypoint>
 
-          <Waypoint date="June 1911" place="Nashville">
+          <Waypoint onZoom={setLightbox} date="June 1911" place="Nashville">
             <h3>Felix Alonzo &ldquo;Lonnie&rdquo; is born</h3>
             <p>
               The youngest — named for two of Jessie&rsquo;s brothers, and
@@ -346,7 +355,7 @@ export default function JessiePage() {
             </p>
           </Waypoint>
 
-          <Waypoint
+          <Waypoint onZoom={setLightbox}
             date="January 12, 1916"
             place="Nashville"
             media={{
@@ -365,7 +374,7 @@ export default function JessiePage() {
             </p>
           </Waypoint>
 
-          <Waypoint
+          <Waypoint onZoom={setLightbox}
             date="January 28, 1916"
             place="Nashville"
             media={{
@@ -387,7 +396,7 @@ export default function JessiePage() {
             </p>
           </Waypoint>
 
-          <Waypoint
+          <Waypoint onZoom={setLightbox}
             date="March 22, 1926"
             place="Nashville"
             media={{
@@ -408,7 +417,7 @@ export default function JessiePage() {
             </p>
           </Waypoint>
 
-          <Waypoint
+          <Waypoint onZoom={setLightbox}
             date="February 6, 1929"
             place="Robertson County, Tennessee"
             media={{
@@ -426,7 +435,7 @@ export default function JessiePage() {
             </p>
           </Waypoint>
 
-          <Waypoint date="About 1947" place="Miami, Florida">
+          <Waypoint onZoom={setLightbox} date="About 1947" place="Miami, Florida">
             <h3>She leaves Nashville</h3>
             <p>
               After a lifetime in one city, Jessie moves south — near Joseph,
@@ -434,7 +443,7 @@ export default function JessiePage() {
             </p>
           </Waypoint>
 
-          <Waypoint date="August 1958" place="Miami">
+          <Waypoint onZoom={setLightbox} date="August 1958" place="Miami">
             <h3>A fourth great-grandchild is born</h3>
             <p>
               The obituary five months later will count four
@@ -442,7 +451,7 @@ export default function JessiePage() {
             </p>
           </Waypoint>
 
-          <Waypoint
+          <Waypoint onZoom={setLightbox}
             date="February 21, 1959"
             place="Miami · buried in Nashville"
             media={{
@@ -530,7 +539,7 @@ export default function JessiePage() {
             <p style={{ marginTop: "1.6rem" }}>
               <a
                 className="rr-inline-link"
-                href="/journeys/jessie/what-it-means"
+                href="/dna-surprises"
               >
                 Part Two: What a DNA surprise means — and how I handle them
                 at Roots &amp; Road →
@@ -539,6 +548,10 @@ export default function JessiePage() {
           </div>
         </section>
       </main>
+
+      <Lightbox item={lightbox} onClose={() => setLightbox(null)} />
+
+      <a className="j-top" href="#top" aria-label="Back to top">↑</a>
 
       <footer className="rr-close">
         <h2>What might your records be keeping?</h2>
@@ -549,6 +562,9 @@ export default function JessiePage() {
         <a className="rr-btn" href="/#discovery-call">
           Book a discovery call
         </a>
+        <p className="j-morelinks">
+          Continue the stories: <a href="/stories/mike">Mike</a> · <a href="/stories/bennetts">The Bennetts</a> · <a href="/dna-surprises">What a DNA surprise means</a>
+        </p>
         <p className="rr-colophon">
           Roots &amp; Road · Identity Adventures · Sources: U.S. Census 1900;
           The Tennessean 1898, 1899, 1916, 1926; The Nashville American 1903;
