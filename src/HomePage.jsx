@@ -29,6 +29,7 @@ const journeys = [
   },
   {
     id: "jessie",
+    link: "/journeys/jessie",
     eyebrow: "Nashville, Tennessee",
     title: "The secrets Jessie kept",
     teaser:
@@ -168,8 +169,18 @@ export default function HomePage() {
                     )}
                   </div>
                   <p className="rr-card-eyebrow">{j.eyebrow}</p>
-                  <h3>{j.title}</h3>
-                  <p className="rr-card-teaser">{j.teaser}</p>
+                  <h3>{j.link ? <a href={j.link}>{j.title}</a> : j.title}</h3>
+                  <p className="rr-card-teaser">
+                    {j.teaser}
+                    {j.link && (
+                      <>
+                        {" "}
+                        <a className="rr-inline-link" href={j.link}>
+                          Read the story →
+                        </a>
+                      </>
+                    )}
+                  </p>
                 </article>
               ))}
             </div>

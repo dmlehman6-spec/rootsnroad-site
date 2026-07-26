@@ -1,0 +1,341 @@
+/* Jessie case study — layered interior language.
+   Relies on tokens defined in homepage.css (:root). */
+
+.jessie main {
+  position: relative;
+}
+
+/* ---------------- Hero ---------------- */
+.j-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(2.5rem, 7vw, 5rem) 2rem;
+}
+
+.j-wash {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.14;
+}
+
+.j-veil {
+  position: absolute;
+  inset: 0;
+  background: rgba(245, 240, 230, 0.5);
+}
+
+.j-hero-inner {
+  position: relative;
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.j-portrait {
+  flex: 0 0 min(300px, 38vw);
+  margin: 0;
+  transform: rotate(-1deg); /* rotated element 1 of 2 in this viewport */
+}
+
+.j-portrait img {
+  width: 100%;
+  display: block;
+  border: 6px solid var(--paper);
+  outline: 0.5px solid #cfc6b0;
+}
+
+.j-portrait figcaption {
+  font-family: var(--ui);
+  font-size: 0.68rem;
+  font-style: italic;
+  color: var(--stone);
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.j-hero-copy h1 {
+  font-weight: 500;
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  line-height: 1.15;
+  margin: 0.3rem 0 0.9rem;
+}
+
+.j-lede {
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: var(--ink);
+  max-width: 460px;
+  margin: 0 0 0.9rem;
+}
+
+.j-byline {
+  font-family: var(--ui);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--stone);
+  margin: 0;
+}
+
+/* ---------------- Narrative strata ---------------- */
+.j-strata {
+  padding: 2.6rem 2rem;
+  border-top: 0.5px solid var(--hairline);
+}
+
+.j-strata-deep {
+  background: #f0ead9;
+}
+
+.j-stratum-label {
+  font-family: var(--ui);
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ocean);
+  text-align: center;
+  margin: 0 0 1.4rem;
+}
+
+.j-prose {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.j-prose p {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  margin: 0 0 1.1rem;
+}
+
+.j-prose p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------------- Timeline ---------------- */
+.j-timeline {
+  position: relative;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 2.4rem 2rem 3rem;
+}
+
+.j-route {
+  position: absolute;
+  left: calc(2rem + 5px);
+  top: 2.4rem;
+  bottom: 3rem;
+  width: 0;
+  border-left: 1.5px dashed var(--sage);
+}
+
+.jw {
+  position: relative;
+  display: flex;
+  gap: 1.6rem;
+  padding: 0 0 2.4rem;
+}
+
+.jw-marker {
+  flex: 0 0 118px;
+  position: relative;
+}
+
+.jw-dot {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--sage);
+}
+
+.jw-dot-gold {
+  background: var(--sand);
+}
+
+.jw-date {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--forest);
+  margin: 0 0 0.15rem;
+  padding-left: 24px;
+  line-height: 1.25;
+}
+
+.jw-place {
+  font-family: var(--ui);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin: 0;
+  padding-left: 24px;
+}
+
+.jw-tbc {
+  display: inline-block;
+  font-family: var(--ui);
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--stamp-red);
+  border: 1px solid var(--stamp-red);
+  padding: 1px 5px;
+  margin-left: 6px;
+  vertical-align: 2px;
+  opacity: 0.8;
+}
+
+.jw-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.jw-body h3 {
+  font-size: 1.15rem;
+  margin: 0 0 0.35rem;
+}
+
+.jw-text p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin: 0 0 0.8rem;
+}
+
+.jw-text p:last-child {
+  margin-bottom: 0;
+}
+
+.jw-media {
+  float: right;
+  width: min(300px, 45%);
+  margin: 0 0 0.8rem 1.2rem;
+  background: var(--paper);
+  border: 0.5px solid #cfc6b0;
+  padding: 6px;
+}
+
+.jw-media img {
+  width: 100%;
+  display: block;
+}
+
+.jw-media figcaption {
+  font-family: var(--ui);
+  font-size: 0.66rem;
+  font-style: italic;
+  color: var(--stone);
+  line-height: 1.5;
+  padding: 0.4rem 0.2rem 0.1rem;
+}
+
+.jw-media-rotated {
+  transform: rotate(1deg); /* rotated element, one per stretch of scroll */
+}
+
+/* ---------------- Featured 1903 zoom ---------------- */
+.jw-featured {
+  background: var(--paper);
+  border: 0.5px solid var(--hairline);
+  padding: 1.4rem 1.4rem 1.6rem;
+  margin-bottom: 2.4rem;
+}
+
+.jw-featured .jw-dot {
+  top: 1.6rem;
+}
+
+.jw-body-stack .jw-text {
+  max-width: 540px;
+}
+
+.j-zoom {
+  margin: 1.1rem 0;
+  text-align: center;
+}
+
+.j-zoom img {
+  max-width: 100%;
+  max-height: 460px;
+  border: 0.5px solid #cfc6b0;
+}
+
+.j-zoom figcaption {
+  font-family: var(--ui);
+  font-size: 0.66rem;
+  font-style: italic;
+  color: var(--stone);
+  margin-top: 0.4rem;
+}
+
+.j-zoom-btn {
+  display: inline-block;
+  margin-top: 0.7rem;
+  font-family: var(--ui);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--parchment);
+  background: var(--ocean);
+  border: none;
+  border-radius: 2px;
+  padding: 0.55rem 1.2rem;
+  cursor: pointer;
+}
+
+.j-zoom-btn:hover {
+  background: #3d5b68;
+}
+
+.j-zoom-btn:focus-visible {
+  outline: 2px solid var(--forest);
+  outline-offset: 3px;
+}
+
+/* ---------------- Small screens ---------------- */
+@media (max-width: 700px) {
+  .j-hero-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .j-portrait {
+    flex-basis: auto;
+    width: min(260px, 70vw);
+  }
+
+  .j-lede {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .j-route {
+    display: none;
+  }
+
+  .jw {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .jw-dot {
+    display: none;
+  }
+
+  .jw-date,
+  .jw-place {
+    padding-left: 0;
+  }
+
+  .jw-media {
+    float: none;
+    width: 100%;
+    margin: 0 0 0.8rem;
+  }
+}
