@@ -1,16 +1,19 @@
+import { useState } from "react";
 import "./homepage.css";
 
 /*
-  Roots & Road — Homepage
-  Design system: Cormorant Garamond (display) / Crimson Pro (narrative) / Source Sans 3 (UI)
-  Palette: Deep Forest #2d4a3e · Sage #8fa68c · Ocean #4a6d7c · Parchment #f5f0e6 · Golden Sand #c9a66b · Stone #6b6b6b
-  Layering rules: max two rotated elements + one stamp per viewport; text always on a calm surface.
+  Roots & Road — Homepage (revision 26 Jul 26 per Donna's site notes)
+  - Hero widened so the statement sets on three lines at full width
+  - Global type sizes increased
+  - Process steps 01/02/03 are clickable and expand with detail + thumbnails
+  - Journeys band retitled; card copy updated per notes
+  - Story section: real photo + Donna's new copy
 
-  TODO before launch:
-  - [ ] Replace placeholder blocks marked data-placeholder (Bennett record scan, photo of Donna)
-  - [ ] Point the Discovery Call buttons at the real scheduling link (search for DISCOVERY_URL)
-  - [ ] Living-relatives review: Jessie + Bennett cards reference family DNA discoveries
-  - [ ] Confirm public wording of the service-scope line in the footer
+  TODO:
+  - [ ] 02 The story: sample Identity Journal to link when Donna creates it
+  - [ ] 03 The journey: full Scottish itinerary page to build; link it here
+  - [ ] Research thumbnails: confirm the four image assignments read right
+  - [ ] DISCOVERY_URL still needs the real scheduling link
 */
 
 const DISCOVERY_URL = "#discovery-call"; // TODO: replace with scheduling link
@@ -18,10 +21,11 @@ const DISCOVERY_URL = "#discovery-call"; // TODO: replace with scheduling link
 const journeys = [
   {
     id: "mike",
-    eyebrow: "Scotland · Quebec · Kansas City",
+    link: "/journeys/mike",
+    eyebrow: "Scotland · Quebec · Michigan · Kansas City",
     title: "The man who called himself Mike",
     teaser:
-      "Kansas City to Quebec City to Aberdeen — and the moment Robertson became Robeson.",
+      "Finding the thread backwards from Kansas City to Aberdeen, Scotland — and the moment Robeson was revealed to be Robertson.",
     image: {
       src: "/assets/aberdeen-card.jpg",
       alt: "Watercolor of Aberdeen's harbor at dusk, spires and masts against a heavy sky",
@@ -33,9 +37,9 @@ const journeys = [
     eyebrow: "Nashville, Tennessee",
     title: "The secrets Jessie kept",
     teaser:
-      "All of Nashville knew her. Her sons adored her. A century later, DNA told the rest of her story.",
+      "Born into the bustling Nashville of the late 1800s. Part of the Nashville social scene. Her three sons adored her. A century later, DNA revealed the rest of her story — and what an enigma she was.",
     image: {
-      src: "/assets/divorce-clipping.png",
+      src: "/assets/jessie/divorce-1903.png",
       alt: "1903 newspaper item headed 'Wants a Divorce': Jessie B. Warner entered suit for absolute divorce from J. Henry Warner",
       contain: true,
     },
@@ -46,13 +50,116 @@ const journeys = [
     eyebrow: "Colonial Virginia",
     title: "Now we are Bennetts",
     teaser:
-      "A DNA result, a new surname, and seven generations traced to colonial Virginia.",
-    placeholder: "Bennett record scan",
+      "A surprising DNA result, a change in surname, and the discovery of seven generations traced to colonial Virginia instead of Baden-Baden, Germany.",
+    image: {
+      src: "/assets/bennett-card.jpg",
+      alt: "Handwritten colonial-era record page, browned with age",
+    },
     stamp: "Est. 1709",
   },
 ];
 
+const steps = [
+  {
+    id: "research",
+    num: "01",
+    title: "The research",
+    short:
+      "Records, archives, and DNA you choose to share — until your people become people.",
+    detail: (
+      <>
+        <p>
+          Doing the research is a labor of love and curiosity. I love a good
+          story, and finding it is a passion project. But I will need
+          starting points: names, birth dates and places, occupations,
+          family lore. Small clues often make the difference.
+        </p>
+        <p>
+          I have premium access to many archives, and when needed I&rsquo;ll
+          seek access to others. Because of privacy rules for living
+          persons, finding records from the past 25&ndash;50 years is more
+          difficult than finding pre-1950 records in the USA, for example.
+          I&rsquo;ll search the databases, newspaper archives, genealogy
+          compilations in books, old family files. If you choose DNA
+          testing,{" "}
+          <a className="rr-inline-link" href="/journeys/jessie/what-it-means">
+            we can discuss what that adds to the overall picture
+          </a>
+          .
+        </p>
+      </>
+    ),
+    thumbs: [
+      {
+        src: "/assets/research-census.jpg",
+        alt: "1880 United States census page from Port Huron, Michigan",
+      },
+      {
+        src: "/assets/research-clip.jpg",
+        alt: "Port Huron Times front page with a death notice and portrait",
+      },
+      {
+        src: "/assets/research-directory.jpg",
+        alt: "An 1814 Scottish parish register page of marriage banns",
+      },
+      {
+        src: "/assets/research-book.jpg",
+        alt: "Title page of an 1890 Michigan Pioneer and Historical Society volume",
+      },
+    ],
+  },
+  {
+    id: "story",
+    num: "02",
+    title: "The story",
+    short:
+      "Your family's story, told whole — bound into an Identity Journal to carry and pass down.",
+    detail: (
+      <>
+        <p>
+          Research produces facts; the Identity Journal turns them into your
+          family&rsquo;s story. Records, photographs, maps, and narrative,
+          composed into a keepsake made to be read, carried on the journey,
+          and passed down.
+        </p>
+        <p>
+          <em>A sample Identity Journal is being prepared &mdash; it will be
+          shown here soon.</em>
+        </p>
+      </>
+    ),
+    thumbs: [],
+  },
+  {
+    id: "journey",
+    num: "03",
+    title: "The journey",
+    short:
+      "An itinerary designed around your story, arranged with trusted travel partners.",
+    detail: (
+      <>
+        <p>
+          The itinerary is where the research becomes a road: the streets
+          your ancestors walked, the parishes where they were christened,
+          the harbors they sailed from — sequenced into a journey that is
+          yours alone. I design the route and the story; licensed travel
+          partners handle the bookings.
+        </p>
+        <p>
+          <em>My own Scottish itinerary &mdash; Quebec City to Aberdeen
+          &mdash; is being prepared as a full sample page and will be linked
+          here.</em>
+        </p>
+      </>
+    ),
+    thumbs: [],
+  },
+];
+
 export default function HomePage() {
+  const [openStep, setOpenStep] = useState(null);
+  const open = steps.find((s) => s.id === openStep);
+
   return (
     <div className="rr-page">
       <header className="rr-nav">
@@ -101,32 +208,42 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ---------------- Process ---------------- */}
-        <section className="rr-process" aria-label="How Roots and Road works">
-          <div className="rr-step">
-            <p className="rr-step-num">01</p>
-            <h2>The research</h2>
-            <p>
-              Records, archives, and DNA you choose to share — until your
-              people become people.
-            </p>
+        {/* ---------------- Process (expandable) ---------------- */}
+        <section className="rr-process-wrap" aria-label="How Roots and Road works">
+          <div className="rr-process">
+            {steps.map((s) => (
+              <button
+                key={s.id}
+                type="button"
+                className={`rr-step rr-step-btn${
+                  openStep === s.id ? " rr-step-open" : ""
+                }`}
+                aria-expanded={openStep === s.id}
+                onClick={() =>
+                  setOpenStep(openStep === s.id ? null : s.id)
+                }
+              >
+                <p className="rr-step-num">{s.num}</p>
+                <h2>{s.title}</h2>
+                <p>{s.short}</p>
+                <span className="rr-step-more" aria-hidden="true">
+                  {openStep === s.id ? "− close" : "+ more"}
+                </span>
+              </button>
+            ))}
           </div>
-          <div className="rr-step">
-            <p className="rr-step-num">02</p>
-            <h2>The story</h2>
-            <p>
-              Your family&rsquo;s story, told whole — bound into an Identity
-              Journal to carry and pass down.
-            </p>
-          </div>
-          <div className="rr-step">
-            <p className="rr-step-num">03</p>
-            <h2>The journey</h2>
-            <p>
-              An itinerary designed around your story, arranged with trusted
-              travel partners.
-            </p>
-          </div>
+          {open && (
+            <div className="rr-step-panel">
+              <div className="rr-step-panel-text">{open.detail}</div>
+              {open.thumbs.length > 0 && (
+                <div className="rr-step-thumbs">
+                  {open.thumbs.map((t) => (
+                    <img key={t.src} src={t.src} alt={t.alt} loading="lazy" />
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </section>
 
         {/* ---------------- Sample journeys ---------------- */}
@@ -141,7 +258,7 @@ export default function HomePage() {
           <div className="rr-journeys-inner">
             <p className="rr-eyebrow">Sample journeys</p>
             <h2 className="rr-section-title">
-              Three families. Three trails followed.
+              Three mysteries. Three trails followed.
             </h2>
             <div className="rr-cards">
               {journeys.map((j) => (
@@ -155,18 +272,12 @@ export default function HomePage() {
                     </span>
                   )}
                   <div className="rr-card-media">
-                    {j.image ? (
-                      <img
-                        src={j.image.src}
-                        alt={j.image.alt}
-                        className={j.image.contain ? "rr-contain" : undefined}
-                        loading="lazy"
-                      />
-                    ) : (
-                      <p className="rr-placeholder" data-placeholder>
-                        [ {j.placeholder} ]
-                      </p>
-                    )}
+                    <img
+                      src={j.image.src}
+                      alt={j.image.alt}
+                      className={j.image.contain ? "rr-contain" : undefined}
+                      loading="lazy"
+                    />
                   </div>
                   <p className="rr-card-eyebrow">{j.eyebrow}</p>
                   <h3>{j.link ? <a href={j.link}>{j.title}</a> : j.title}</h3>
@@ -189,17 +300,29 @@ export default function HomePage() {
 
         {/* ---------------- Story teaser ---------------- */}
         <section className="rr-story">
-          <div className="rr-story-photo" data-placeholder>
-            <p className="rr-placeholder">
-              [ photo of Donna — at the desk or on the road ]
-            </p>
+          <div className="rr-story-photo rr-story-photo-img">
+            <img
+              src="/assets/donna.jpg"
+              alt="Donna at work among documents and maps"
+            />
           </div>
           <div className="rr-story-copy">
             <p className="rr-eyebrow">The story behind Roots &amp; Road</p>
             <h2>I followed my own trail first.</h2>
             <p>
-              Decades of research, a DNA surprise in my own family, and a road
-              that led from Quebec City to a granite doorstep in Aberdeen.{" "}
+              Decades of research, scraps handed down from uncles, aunts,
+              distant cousins. Insights shared by fellow researchers,
+              entries in old Bibles, stories told by my grandparents. And a
+              big DNA surprise in my own family led me down many paths. I
+              have followed them all and continue to do so. I&rsquo;ve
+              shared some of my journeys here — time travel back from my
+              father&rsquo;s hometown of Nashville, Tennessee through the
+              hills of North Carolina and Virginia to even Jamestown itself.
+              Some ancestors arrived as the earliest colonists on both sides
+              of my family. Others came in the 19th century, making a long,
+              circuitous journey from Scotland to end up in Kansas City,
+              where my mother was born. Each story is fascinating.{" "}
+              <strong>Let me help you unravel yours.</strong>{" "}
               <a href="/story" className="rr-inline-link">
                 Read my story →
               </a>

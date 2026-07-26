@@ -66,10 +66,10 @@
 }
 
 .j-lede {
-  font-size: 1.08rem;
+  font-size: 1.18rem;
   line-height: 1.7;
   color: var(--ink);
-  max-width: 460px;
+  max-width: 520px;
   margin: 0 0 0.9rem;
 }
 
@@ -102,12 +102,12 @@
 }
 
 .j-prose {
-  max-width: 620px;
+  max-width: 740px;
   margin: 0 auto;
 }
 
 .j-prose p {
-  font-size: 1.02rem;
+  font-size: 1.12rem;
   line-height: 1.75;
   margin: 0 0 1.1rem;
 }
@@ -119,7 +119,7 @@
 /* ---------------- Timeline ---------------- */
 .j-timeline {
   position: relative;
-  max-width: 780px;
+  max-width: 880px;
   margin: 0 auto;
   padding: 2.4rem 2rem 3rem;
 }
@@ -204,7 +204,7 @@
 }
 
 .jw-text p {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   line-height: 1.7;
   margin: 0 0 0.8rem;
 }
@@ -338,4 +338,33 @@
     width: 100%;
     margin: 0 0 0.8rem;
   }
+}
+
+/* ---------------- Part Two headings ---------------- */
+.j-part2-h2 {
+  font-size: 1.3rem;
+  margin: 2rem 0 0.8rem;
+}
+
+
+/* ---------------- Emphasis & questions (26Jul revision) ---------------- */
+.j-prose strong {
+  font-weight: 600;
+  color: var(--forest);
+}
+
+.j-prose h2 {
+  font-size: 1.45rem;
+  margin: 2.2rem 0 0.9rem;
+}
+
+.j-question {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  color: var(--ocean);
+  border-left: 3px solid var(--sand);
+  padding-left: 0.9rem;
+  margin: 1.8rem 0 0.5rem !important;
 }

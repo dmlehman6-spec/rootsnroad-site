@@ -1,5 +1,7 @@
 import HomePage from "./HomePage";
 import JessiePage from "./JessiePage";
+import DnaPage from "./DnaPage";
+import MikePage from "./MikePage";
 
 /*
   Minimal routing without extra packages: the path decides the page.
@@ -12,6 +14,14 @@ export default function App() {
 
   if (path === "/journeys/jessie") {
     return <JessiePage />;
+  }
+
+  if (path === "/journeys/jessie/what-it-means") {
+    return <DnaPage />;
+  }
+
+  if (path === "/journeys/mike") {
+    return <MikePage />;
   }
 
   return <HomePage />;

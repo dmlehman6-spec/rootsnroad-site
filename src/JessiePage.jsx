@@ -4,18 +4,20 @@ import "./jessie.css";
 
 /*
   Roots & Road — Case study: The Secrets Jessie Kept
-  Narrative source: Donna's draft "When the Matches Don't Match" (her first-person voice).
-  Layering rules: readable text on calm surfaces; max two rotated elements + one stamp per viewport.
+  Revision 26 Jul 26 per Donna's site notes:
+  - Eyebrow: "One journey of discovery"; new lede (third-generation Tennessee native)
+  - Section labels: "Beginning with questions" / "Finding answers — the reveal"
+  - Narrative restored to Donna's fuller original draft, interleaved with the
+    timeline in two parts (part 1 through 1903; part 2 from 1904 on)
+  - Two 1898 social clippings added (young, social Jessie)
+  - Wider measure + larger type via jessie.css
 
-  TODO before this page goes public:
-  - [ ] Living-relatives review (standing gate for DNA content)
-  - [ ] Confirm "Raymond and Lonnie" = Raymer and Alonzo before keeping that caption line
-  - [ ] Birthday Celebration clipping date (waypoint wears TBC until confirmed)
-  - [ ] James's death year (TBC)
-  - [ ] Birth-year treatment: currently states Aug 1879 per the 1900 census and
-        annotates the obituary discrepancy — change if Donna rules otherwise
-  - [ ] Closing coda is NEW copy in Donna's voice — needs her approval
-  - [ ] jessie-wash.jpg is a stand-in; swap for her chosen wash when ready
+  TODO:
+  - [ ] social-1898a clipping: date + source needed (wears TBC)
+  - [ ] Reveal says "three-hundred-pound patriarch" for consistency with the
+        narrative's "over three hundred pounds" (doc still said four hundred
+        there) — Donna to confirm
+  - [ ] jessie-wash.jpg still a stand-in
 */
 
 const A = "/assets/jessie";
@@ -79,12 +81,15 @@ export default function JessiePage() {
               <figcaption>The only portrait. Hand-tinted, date unknown.</figcaption>
             </figure>
             <div className="j-hero-copy">
-              <p className="rr-eyebrow">A sample journey · Nashville, Tennessee</p>
+              <p className="rr-eyebrow">
+                One journey of discovery · Nashville, Tennessee
+              </p>
               <h1>The secrets Jessie kept</h1>
               <p className="j-lede">
-                All of Nashville knew her. Her sons adored her. She was, by
-                every telling, the heart of her family — and for a hundred
-                years, part of her story stayed hidden in plain sight.
+                She was a third-generation Tennessee native, part of the
+                Nashville social scene. She was, by every telling, the heart
+                of her family — and for over a hundred years, a key part of
+                her story stayed hidden in plain sight.
               </p>
               <p className="j-byline">
                 Researched and told by Donna, from her own family record.
@@ -93,32 +98,52 @@ export default function JessiePage() {
           </div>
         </section>
 
-        {/* ---------- The question ---------- */}
+        {/* ---------- Beginning with questions ---------- */}
         <section className="j-strata">
-          <p className="j-stratum-label">Layer one — the question</p>
+          <p className="j-stratum-label">Beginning with questions</p>
           <div className="j-prose">
             <p>Let me tell you about my great-grandmother.</p>
             <p>
               Jessie Byrd Raymer was eleven months old when her mother died.
               Her father, Thomas Langford Raymer Sr., was left with a baby
-              girl and four young sons, and he did what widowed men of his era
-              so often did: he remarried within the year. Two years later, the
-              family absorbed another blow that is almost unthinkable now —
-              one of Jessie&rsquo;s brothers, just twelve years old, was
-              kidnapped and murdered.
+              girl and four young sons, and he did what widowed men of his
+              era so often did: he remarried within the year. Two years
+              later, the family absorbed another blow that is almost
+              unthinkable now — one of Jessie&rsquo;s brothers, just twelve
+              years old, was kidnapped and murdered.
             </p>
             <p>
-              Grief kept its seat at the Raymer table. Jessie grew up amid the
-              noise and commerce of her stepmother&rsquo;s Nashville saloon,
-              in a household that had learned, over and over, how to carry
-              loss. When Jessie was seven, her half-sister Katie Ilene was
-              born. Remember Katie. She matters.
+              Grief kept its seat at the Raymer table. Thomas and his new
+              wife lost their first two children together. Four more
+              followed, and three of them survived. His second wife was a
+              woman of unusual enterprise for her time: she owned a saloon
+              in Nashville, and a grocery besides. Jessie grew up amid the
+              noise and commerce of that saloon, with a father who drank
+              heavily and a household that had learned, over and over, how
+              to carry loss.
+            </p>
+            <p>
+              When Jessie was seven, her half-sister Katie Ilene was born.
+              Remember Katie. She matters.
+            </p>
+            <p>
+              At eighteen, Jessie married James Henry Warner, a man nearly a
+              decade her senior from one of Nashville&rsquo;s well-known
+              families of German butchers. James was, by every account, a
+              formidable presence — the <em>Nashville Banner</em> reported
+              his weight at over three hundred pounds. He had been married
+              once before, without children; the public divorce record shows
+              his first wife cited cruelty, and James, a Catholic, later had
+              the marriage annulled. Jessie herself would eventually file
+              for divorce on similar grounds — and then withdraw the
+              petition. Whatever passed inside the walls of the Warner
+              household, the paper trail suggests it was not a gentle place.
             </p>
           </div>
         </section>
 
-        {/* ---------- Timeline ---------- */}
-        <section className="j-timeline" aria-label="Jessie's documented timeline">
+        {/* ---------- Timeline part 1: birth to 1903 ---------- */}
+        <section className="j-timeline" aria-label="Jessie's documented timeline, part one">
           <div className="j-route" aria-hidden="true" />
 
           <Waypoint date="August 23, 1881" place="Tennessee">
@@ -130,6 +155,45 @@ export default function JessiePage() {
           </Waypoint>
 
           <Waypoint
+            date="January 8, 1898"
+            place="Nashville"
+            media={{
+              src: `${A}/social-1898a.png`,
+              alt: "Newspaper item: the East End Lucky Club met at the home of Miss Jessie Raymers, 402 Shelby Avenue, and indulged in various games until a late hour, when dainty refreshments were served",
+              caption:
+                "The Tennessean, January 8, 1898. 'Raymers,' the paper wrote — the record's first small drift of her name.",
+            }}
+          >
+            <h3>The East End Lucky Club</h3>
+            <p>
+              Sixteen, and already a hostess: the club meets at her home at
+              402 Shelby Avenue and indulges in &ldquo;various games until a
+              late hour, when dainty refreshments were served.&rdquo; Before
+              she was a Warner, she was a girl the papers knew.
+            </p>
+          </Waypoint>
+
+          <Waypoint
+            date="December 14, 1898"
+            place="Nashville"
+            media={{
+              src: `${A}/social-1898b.png`,
+              alt: "The Tennessean society item describing a birthday celebration decorated in white roses and ferns, with Jessie Raymer among the guests",
+              caption:
+                "The Tennessean, December 14, 1898. Among the guests: her cousin Tom Raymer, with whose family she was living.",
+            }}
+            rotate
+          >
+            <h3>White roses and ferns</h3>
+            <p>
+              Seventeen, sociable, and present — a birthday party
+              &ldquo;decorated in white roses and ferns,&rdquo; her name in
+              the guest list beside friends and neighbors. This is the
+              Jessie before the Warner years: young and out in the world.
+            </p>
+          </Waypoint>
+
+          <Waypoint
             date="May 1899"
             place="Nashville"
             media={{
@@ -137,7 +201,6 @@ export default function JessiePage() {
               alt: "Marriage licenses column from The Tennessean, May 4, 1899, listing J. H. S. Warner and Jessie B. Raymer",
               caption: "The Tennessean, May 4, 1899.",
             }}
-            rotate
           >
             <h3>A license is issued</h3>
             <p>
@@ -220,26 +283,57 @@ export default function JessiePage() {
               </div>
             </div>
           </div>
+        </section>
 
-          <Waypoint
-            date="August 23, 1904"
-            place="Evansville, Indiana"
-          >
+        {/* ---------- The story turns ---------- */}
+        <section className="j-strata">
+          <p className="j-stratum-label">The story turns</p>
+          <div className="j-prose">
+            <p>
+              Here is where the story turns. Jessie&rsquo;s first son was
+              fathered outside her marriage — and James knew. He took her to
+              Indiana to give birth, far from Nashville eyes, to disguise
+              the child&rsquo;s origins. In time Jessie had three sons. The
+              youngest, born in June of 1911, was Felix Alonzo, or
+              &ldquo;Lonnie&rdquo; — my grandfather.
+            </p>
+            <p>
+              In the year before Felix was born, Jessie often traveled out
+              of the city to visit her father and stepmother, who had moved
+              to a farm beyond Nashville. Katie — the half-sister, now grown
+              and married to a man named William Bennett — had lived on that
+              same farm. But that year, Katie and William left it and moved
+              into Nashville, taking up residence near the Warner household.
+            </p>
+            <p>
+              Katie died at thirty, from complications of a premature birth.
+              James Warner, harsh to the end, died of heart failure at
+              fifty-four. Jessie, remarkably, remarried within the family —
+              a cousin of her late husband, Percy Warner — and the story, as
+              far as anyone knew, closed there.
+            </p>
+          </div>
+        </section>
+
+        {/* ---------- Timeline part 2: 1904 to 1959 ---------- */}
+        <section className="j-timeline" aria-label="Jessie's documented timeline, part two">
+          <div className="j-route" aria-hidden="true" />
+
+          <Waypoint date="August 23, 1904" place="Evansville, Indiana">
             <h3>Joseph Henry &ldquo;Jody&rdquo; is born</h3>
             <p>
               Ten months after the withdrawn petition, Jessie&rsquo;s first
               son is born — not in Nashville, but across the Ohio River in
-              Indiana. James knew the child was not his, and took her out of
-              the state to give birth, far from Nashville eyes. The family
-              simply came home with a son.
+              Indiana, far from Nashville eyes. The family simply came home
+              with a son.
             </p>
           </Waypoint>
 
           <Waypoint date="August 30, 1907" place="Nashville">
             <h3>Langford Raymer &ldquo;Bubbie&rdquo; is born</h3>
             <p>
-              Her second son carries her family in both names — Langford, her
-              father&rsquo;s middle name; Raymer, her own maiden name,
+              Her second son carries her family in both names — Langford,
+              her father&rsquo;s middle name; Raymer, her own maiden name,
               stitched into the next generation.
             </p>
           </Waypoint>
@@ -248,12 +342,7 @@ export default function JessiePage() {
             <h3>Felix Alonzo &ldquo;Lonnie&rdquo; is born</h3>
             <p>
               The youngest — named for two of Jessie&rsquo;s brothers, and
-              &ldquo;Lonnie&rdquo; his whole life. My grandfather. In the
-              year before his birth, Katie — Jessie&rsquo;s half-sister, now
-              married to a man named William Bennett — had moved with her
-              husband into Nashville, taking up residence near the Warner
-              household. Hold that thought, the way the family held it: not
-              at all, for a hundred years.
+              &ldquo;Lonnie&rdquo; his whole life. My grandfather.
             </p>
           </Waypoint>
 
@@ -360,7 +449,7 @@ export default function JessiePage() {
               src: `${A}/obituary-1959.jpg`,
               alt: "Obituary for Mrs. Jessie B. Warner from The Miami News, February 22, 1959",
               caption:
-                "The Miami News, February 22, 1959. 'Bird,' the paper spelled it — the family wrote Byrd. Even at the end, the record drifts.",
+                "The Miami News, February 22, 1959. 'Bird,' this one says — Jessie herself spelled it Bird, Birdie, or Byrd, depending on the day. Even her name kept its options open.",
             }}
           >
             <h3>Jessie dies</h3>
@@ -372,9 +461,9 @@ export default function JessiePage() {
           </Waypoint>
         </section>
 
-        {/* ---------- The reveal ---------- */}
+        {/* ---------- Finding answers — the reveal ---------- */}
         <section className="j-strata j-strata-deep">
-          <p className="j-stratum-label">Layer five — the reveal</p>
+          <p className="j-stratum-label">Finding answers — the reveal</p>
           <div className="j-prose">
             <p>
               For a hundred years, that was the record. Names, dates, a
@@ -382,12 +471,14 @@ export default function JessiePage() {
               tree.
             </p>
             <p>Then a dozen of us spit into tubes.</p>
+
+            <h2>The matches that shouldn&rsquo;t have been there</h2>
             <p>
               When our DNA results came back, we found close cousin matches
-              none of us could place — and, more telling, an absence. Not one
-              of us matched the Warner line we descended from on paper. The
-              butchers of Nashville, the formidable patriarch, the whole
-              expected branch: silent.
+              none of us could place — and, more telling, an absence. Not
+              one of us matched the Warner line we descended from on paper.
+              The butchers of Nashville, the three-hundred-pound patriarch,
+              the whole expected branch: silent.
             </p>
             <p>
               The matches pointed somewhere else. They pointed to William
@@ -398,32 +489,28 @@ export default function JessiePage() {
             </p>
             <p>
               No one alive had known. Or almost no one. When I brought the
-              findings to family, the eldest among us wasn&rsquo;t shocked.
-              The affair that produced Jessie&rsquo;s <em>first</em> son had
-              been known once, and quietly kept. The later chapters were
-              news, but the character of the story was not. The family had
-              simply stopped telling it.
+              findings to my aunt, she wasn&rsquo;t shocked. Her
+              grandmother, she confirmed, was known in the family to have
+              had the affair that produced her <em>first</em> son — the
+              Indiana baby. The later chapters were news, but the character
+              of the story was not. The family had simply stopped telling
+              it.
             </p>
-          </div>
-        </section>
 
-        {/* ---------- The meaning ---------- */}
-        <section className="j-strata">
-          <p className="j-stratum-label">Layer six — the meaning</p>
-          <div className="j-prose">
+            <h2>What I felt — and what I didn&rsquo;t</h2>
             <p>
               Here is what surprised me most about the surprise: it
               didn&rsquo;t feel like scandal. It felt like understanding.
             </p>
             <p>
               Suddenly Jessie was not a name and a pair of dates. She was a
-              motherless girl raised in a saloon, married young to a harsh
-              man twice her size, filing for divorce and then losing her
-              nerve — or her options. She was a woman in 1910 with almost no
-              doors open to her, and she found one anyway. I don&rsquo;t have
-              to approve of every choice she made to recognize that I exist
-              because of them. My grandfather, my father, me — we all walked
-              out of that door she found.
+              motherless girl raised in a saloon, married at eighteen to a
+              harsh man twice her size, filing for divorce and then losing
+              her nerve — or her options. She was a woman in 1910 with
+              almost no doors open to her, and she found one anyway. I
+              don&rsquo;t have to approve of every choice she made to
+              recognize that I exist because of them. My grandfather, my
+              father, me — we all walked out of that door she found.
             </p>
             <p>
               And this is the part I keep returning to. When Jessie died in
@@ -436,7 +523,18 @@ export default function JessiePage() {
               make me love her more, not less.
             </p>
             <p>
-              I didn&rsquo;t lose a great-grandmother. I gained one.
+              I didn&rsquo;t lose a great-grandmother. I gained deeper
+              understanding of the one I&rsquo;d had all along and never
+              knew.
+            </p>
+            <p style={{ marginTop: "1.6rem" }}>
+              <a
+                className="rr-inline-link"
+                href="/journeys/jessie/what-it-means"
+              >
+                Part Two: What a DNA surprise means — and how I handle them
+                at Roots &amp; Road →
+              </a>
             </p>
           </div>
         </section>
@@ -453,8 +551,9 @@ export default function JessiePage() {
         </a>
         <p className="rr-colophon">
           Roots &amp; Road · Identity Adventures · Sources: U.S. Census 1900;
-          The Tennessean 1899, 1916, 1926; The Nashville American 1903; Tennessee
-          marriage records; The Miami News 1959; family research by Donna
+          The Tennessean 1898, 1899, 1916, 1926; The Nashville American 1903;
+          Nashville Banner 1916; Tennessee marriage records; The Miami News
+          1959; family research by Donna
         </p>
       </footer>
     </div>
