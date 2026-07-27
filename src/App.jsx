@@ -18,8 +18,10 @@ import JourneysPage from "./JourneysPage";
                                  placeholder until Donna writes the content
 */
 
-export default function App() {
-  const path = window.location.pathname;
+export default function App({ path }) {
+  // In the browser, read the address bar; during pre-rendering, the
+  // build script passes the path in as a prop instead.
+  if (path === undefined) path = window.location.pathname;
 
   if (path === "/stories/jessie") return <JessiePage />;
   if (path === "/stories/mike") return <MikePage />;
