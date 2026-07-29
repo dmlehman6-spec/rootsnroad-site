@@ -1,4 +1,5 @@
 import "./homepage.css";
+import FooterLegal from "./FooterLegal";
 import "./jessie.css";
 
 /*
@@ -271,6 +272,7 @@ export default function DnaPage() {
             Read Part One: The secrets Jessie kept
           </a>
         </p>
+        <FooterLegal />
       </footer>
     </div>
   );

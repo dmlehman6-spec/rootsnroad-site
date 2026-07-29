@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./homepage.css";
+import FooterLegal from "./FooterLegal";
 
 /*
   Roots & Road — Homepage (revision 26 Jul 26 per Donna's site notes)
@@ -87,6 +88,11 @@ const steps = [
             we can discuss what that adds to the overall picture
           </a>
           .
+        </p>
+        <p>
+          <a className="rr-inline-link" href="/methodology">
+            Read more about my methodology →
+          </a>
         </p>
       </>
     ),
@@ -357,6 +363,7 @@ export default function HomePage() {
           Roots &amp; Road · Identity Adventures · Europe, the British Isles,
           Australia &amp; New Zealand, North America
         </p>
+        <FooterLegal />
       </footer>
     </div>
   );

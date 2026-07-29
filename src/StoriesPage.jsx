@@ -1,4 +1,5 @@
 import "./homepage.css";
+import FooterLegal from "./FooterLegal";
 
 /*
   Roots & Road — Stories index (/stories)
@@ -135,6 +136,7 @@ export default function StoriesPage() {
         <a className="rr-btn" href="/#discovery-call">
           Book a discovery call
         </a>
+        <FooterLegal />
       </footer>
     </div>
   );

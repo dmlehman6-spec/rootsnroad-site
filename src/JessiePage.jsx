@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./homepage.css";
+import FooterLegal from "./FooterLegal";
 import "./jessie.css";
 import Lightbox from "./Lightbox";
 
@@ -571,6 +572,7 @@ export default function JessiePage() {
           Nashville Banner 1916; Tennessee marriage records; The Miami News
           1959; family research by Donna
         </p>
+        <FooterLegal />
       </footer>
     </div>
   );

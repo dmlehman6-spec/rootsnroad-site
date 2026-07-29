@@ -53,6 +53,16 @@ const routes = [
     description:
       "Heritage journeys designed from completed research — walking the streets, standing in the parishes, and seeing the places your ancestors knew.",
   },
+  { path: "/privacy",
+    title: "Privacy - Roots & Road",
+    description: "Privacy",
+  },
+   
+  {path: "/methodology",
+    title: "Methodology - Roots & Road",
+    description: "How I go about the work",
+  },
+    
 ];
 
 const template = readFileSync(join(root, "dist/index.html"), "utf8");

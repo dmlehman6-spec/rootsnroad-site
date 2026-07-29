@@ -573,3 +573,37 @@ a.rr-btn:visited {
   display: block;
   height: 100%;
 }
+
+
+/* ---------------- Button text: always parchment, no exceptions ----------------
+   (Fixes recurring dark-on-dark text from link color rules elsewhere.) */
+.rr-page a.rr-btn,
+.rr-page a.rr-btn:link,
+.rr-page a.rr-btn:visited,
+.rr-page a.rr-btn:hover,
+.rr-page a.rr-btn:active,
+.rr-page a.rr-btn:focus {
+  color: #f5f0e6 !important;
+}
+
+/* ---------------- Legal footer strip ---------------- */
+.rr-legal {
+  border-top: 0.5px solid var(--hairline);
+  margin-top: 1.4rem;
+  padding-top: 1rem;
+}
+
+.rr-legal p {
+  font-family: var(--ui);
+  font-size: 0.72rem;
+  color: #a89d84;
+  margin: 0 0 0.3rem;
+}
+
+.rr-legal a {
+  color: var(--ocean);
+}
+
+.rr-legal a:hover {
+  text-decoration: underline;
+}

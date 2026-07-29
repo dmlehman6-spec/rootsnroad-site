@@ -5,23 +5,19 @@ import MikePage from "./MikePage";
 import BennettsPage from "./BennettsPage";
 import StoriesPage from "./StoriesPage";
 import JourneysPage from "./JourneysPage";
+import PrivacyPage from "./PrivacyPage";
+import MethodologyPage from "./MethodologyPage";
 
 /*
-  Minimal routing without extra packages: the path decides the page.
-  public/_redirects makes Netlify serve index.html for every path.
-
-  Pre-rendering: during `npm run build`, prerender.mjs passes the path in
-  as a prop; in the browser we read the address bar instead.
-
-  IMPORTANT: Netlify serves pre-rendered pages with a trailing slash
-  (/stories/jessie/), so we normalize the path before matching —
-  otherwise every deep page falls through to the homepage.
+  Path-based router. THREE behaviors are load-bearing — do not remove:
+  1. `path` arrives as a PROP during pre-rendering (prerender.mjs);
+  2. in the browser it falls back to window.location.pathname;
+  3. trailing slashes are stripped (Netlify serves /stories/jessie/).
 */
 
 export default function App({ path }) {
   if (path === undefined) path = window.location.pathname;
 
-  // Normalize: strip trailing slash (but keep "/" itself)
   if (path.length > 1 && path.endsWith("/")) {
     path = path.slice(0, -1);
   }
@@ -32,6 +28,8 @@ export default function App({ path }) {
   if (path === "/stories") return <StoriesPage />;
   if (path === "/dna-surprises") return <DnaPage />;
   if (path === "/journeys") return <JourneysPage />;
+  if (path === "/privacy") return <PrivacyPage />;
+  if (path === "/methodology") return <MethodologyPage />;
 
   return <HomePage />;
 }

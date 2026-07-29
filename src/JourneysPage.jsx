@@ -1,4 +1,5 @@
 import "./homepage.css";
+import FooterLegal from "./FooterLegal";
 
 /*
   Roots & Road — Journeys (/journeys)
@@ -67,6 +68,7 @@ export default function JourneysPage() {
         <p className="rr-colophon">
           Roots &amp; Road · Identity Adventures
         </p>
+        <FooterLegal />
       </footer>
     </div>
   );

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./homepage.css";
+import FooterLegal from "./FooterLegal";
 import "./jessie.css";
 import Lightbox from "./Lightbox";
 
@@ -834,6 +835,7 @@ export default function MikePage() {
           Registers, Aberdeen; Michigan birth records; family research by
           Donna
         </p>
+        <FooterLegal />
       </footer>
     </div>
   );
