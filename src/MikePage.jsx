@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./homepage.css";
+import { BOOKING_URL } from "./booking";
 import FooterLegal from "./FooterLegal";
 import "./jessie.css";
 import Lightbox from "./Lightbox";
@@ -72,7 +73,7 @@ export default function MikePage() {
         <nav aria-label="Primary">
           <a href="/">Home</a>
           <a href="/stories">All stories</a>
-          <a className="rr-btn rr-btn-nav" href="/#discovery-call">
+          <a className="rr-btn rr-btn-nav" href={BOOKING_URL} target="_blank" rel="noreferrer">
             Discovery call
           </a>
         </nav>
@@ -820,7 +821,7 @@ export default function MikePage() {
           whaling ship off Aberdeen are all waiting in the same tree. If
           you're ready to find yours, that's what a discovery call is for.
         </p>
-        <a className="rr-btn" href="/#discovery-call">
+        <a className="rr-btn" href={BOOKING_URL} target="_blank" rel="noreferrer">
           Book a discovery call
         </a>
         <p className="j-morelinks">

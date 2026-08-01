@@ -1,4 +1,5 @@
 import "./homepage.css";
+import { BOOKING_URL } from "./booking";
 import FooterLegal from "./FooterLegal";
 
 /*
@@ -57,7 +58,7 @@ export default function StoriesPage() {
           <a href="/">Home</a>
           <a href="/#how-it-works">How it works</a>
           <a href="/journeys">Journeys</a>
-          <a className="rr-btn rr-btn-nav" href="/#discovery-call">
+          <a className="rr-btn rr-btn-nav" href={BOOKING_URL} target="_blank" rel="noreferrer">
             Discovery call
           </a>
         </nav>
@@ -133,7 +134,7 @@ export default function StoriesPage() {
         <p className="rr-close-sub">
           A conversation costs nothing and obligates nothing.
         </p>
-        <a className="rr-btn" href="/#discovery-call">
+        <a className="rr-btn" href={BOOKING_URL} target="_blank" rel="noreferrer">
           Book a discovery call
         </a>
         <FooterLegal />

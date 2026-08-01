@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./homepage.css";
+import { BOOKING_URL } from "./booking";
 import FooterLegal from "./FooterLegal";
 import "./jessie.css";
 import Lightbox from "./Lightbox";
@@ -71,7 +72,7 @@ export default function JessiePage() {
         <nav aria-label="Primary">
           <a href="/">Home</a>
           <a href="/stories">All stories</a>
-          <a className="rr-btn rr-btn-nav" href="/#discovery-call">
+          <a className="rr-btn rr-btn-nav" href={BOOKING_URL} target="_blank" rel="noreferrer">
             Discovery call
           </a>
         </nav>
@@ -560,7 +561,7 @@ export default function JessiePage() {
           Every family has a Jessie. A conversation costs nothing and
           obligates nothing.
         </p>
-        <a className="rr-btn" href="/#discovery-call">
+        <a className="rr-btn" href={BOOKING_URL} target="_blank" rel="noreferrer">
           Book a discovery call
         </a>
         <p className="j-morelinks">

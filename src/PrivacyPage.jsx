@@ -1,4 +1,5 @@
 import "./homepage.css";
+import { BOOKING_URL } from "./booking";
 import "./jessie.css";
 import FooterLegal from "./FooterLegal";
 
@@ -20,7 +21,7 @@ export default function PrivacyPage() {
         <nav aria-label="Primary">
           <a href="/">Home</a>
           <a href="/stories">Story</a>
-          <a className="rr-btn rr-btn-nav" href="/#discovery-call">
+          <a className="rr-btn rr-btn-nav" href={BOOKING_URL} target="_blank" rel="noreferrer">
             Discovery call
           </a>
         </nav>
@@ -54,8 +55,8 @@ export default function PrivacyPage() {
               <em>
                 A full privacy policy is being prepared and will appear here.
                 In the meantime, questions are welcome at{" "}
-                <a className="rr-inline-link" href="mailto:hello@rootsnroad.com">
-                  hello@rootsnroad.com
+                <a className="rr-inline-link" href="mailto:donna@rootsnroad.com">
+                  donna@rootsnroad.com
                 </a>
                 .
               </em>

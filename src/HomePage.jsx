@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BOOKING_URL } from "./booking";
 import "./homepage.css";
 import FooterLegal from "./FooterLegal";
 
@@ -17,7 +18,7 @@ import FooterLegal from "./FooterLegal";
   - [ ] DISCOVERY_URL still needs the real scheduling link
 */
 
-const DISCOVERY_URL = "#discovery-call"; // TODO: replace with scheduling link
+const DISCOVERY_URL = BOOKING_URL;
 
 const journeys = [
   {
@@ -183,7 +184,7 @@ export default function HomePage() {
           {/* TODO: restore when pages are built:
           <a href="/services">Services</a>
           <a href="/faq">FAQ</a> */}
-          <a className="rr-btn rr-btn-nav" href={DISCOVERY_URL}>
+          <a className="rr-btn rr-btn-nav" href={DISCOVERY_URL} target="_blank" rel="noreferrer">
             Discovery call
           </a>
         </nav>
@@ -210,7 +211,7 @@ export default function HomePage() {
               I research your family&rsquo;s story, then design a journey to
               the places where it happened. Not a tour. A&nbsp;homecoming.
             </p>
-            <a className="rr-btn" href={DISCOVERY_URL}>
+            <a className="rr-btn" href={DISCOVERY_URL} target="_blank" rel="noreferrer">
               Begin with a conversation
             </a>
           </div>
@@ -356,7 +357,7 @@ export default function HomePage() {
         <p className="rr-close-sub">
           A conversation costs nothing and obligates nothing.
         </p>
-        <a className="rr-btn" href={DISCOVERY_URL}>
+        <a className="rr-btn" href={DISCOVERY_URL} target="_blank" rel="noreferrer">
           Book a discovery call
         </a>
         <p className="rr-colophon">

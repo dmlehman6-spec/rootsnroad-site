@@ -1,4 +1,5 @@
 import "./homepage.css";
+import { BOOKING_URL } from "./booking";
 import FooterLegal from "./FooterLegal";
 import "./jessie.css";
 
@@ -25,7 +26,7 @@ export default function DnaPage() {
         <nav aria-label="Primary">
           <a href="/">Home</a>
           <a href="/stories">All stories</a>
-          <a className="rr-btn rr-btn-nav" href="/#discovery-call">
+          <a className="rr-btn rr-btn-nav" href={BOOKING_URL} target="_blank" rel="noreferrer">
             Discovery call
           </a>
         </nav>
@@ -260,7 +261,7 @@ export default function DnaPage() {
           No test required. Just your questions — and maybe a few of your
           grandmother&rsquo;s.
         </p>
-        <a className="rr-btn" href="/#discovery-call">
+        <a className="rr-btn" href={BOOKING_URL} target="_blank" rel="noreferrer">
           Book a discovery call
         </a>
         <p className="j-morelinks">

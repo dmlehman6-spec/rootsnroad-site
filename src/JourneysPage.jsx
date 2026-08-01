@@ -1,4 +1,5 @@
 import "./homepage.css";
+import { BOOKING_URL } from "./booking";
 import FooterLegal from "./FooterLegal";
 
 /*
@@ -22,7 +23,7 @@ export default function JourneysPage() {
           <a href="/">Home</a>
           <a href="/stories">Story</a>
           <a href="/#how-it-works">How it works</a>
-          <a className="rr-btn rr-btn-nav" href="/#discovery-call">
+          <a className="rr-btn rr-btn-nav" href={BOOKING_URL} target="_blank" rel="noreferrer">
             Discovery call
           </a>
         </nav>
@@ -57,7 +58,7 @@ export default function JourneysPage() {
               </a>{" "}
               show the research that shapes every road I design.
             </p>
-            <a className="rr-btn" href="/#discovery-call">
+            <a className="rr-btn" href={BOOKING_URL} target="_blank" rel="noreferrer">
               Begin with a conversation
             </a>
           </div>

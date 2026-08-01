@@ -1,4 +1,5 @@
 import "./homepage.css";
+import { BOOKING_URL } from "./booking";
 import "./jessie.css";
 import FooterLegal from "./FooterLegal";
 
@@ -20,7 +21,7 @@ export default function MethodologyPage() {
         <nav aria-label="Primary">
           <a href="/">Home</a>
           <a href="/stories">Story</a>
-          <a className="rr-btn rr-btn-nav" href="/#discovery-call">
+          <a className="rr-btn rr-btn-nav" href={BOOKING_URL} target="_blank" rel="noreferrer">
             Discovery call
           </a>
         </nav>
