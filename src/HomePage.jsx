@@ -322,8 +322,8 @@ export default function HomePage() {
         <section className="rr-story" id="story">
           <div className="rr-story-photo rr-story-photo-img">
             <img
-              src="/assets/donna.jpg"
-              alt="Donna at work among documents and maps"
+              src="/assets/story-desk.jpg"
+              alt="A researcher's desk: old family portraits, handwritten letters, a fountain pen, and a map glowing with traced routes leading toward a village road"
             />
           </div>
           <div className="rr-story-copy">

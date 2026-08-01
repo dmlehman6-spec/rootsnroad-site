@@ -537,7 +537,7 @@ a.rr-btn:visited {
 
 /* Story photo (real image) */
 .rr-story-photo-img {
-  flex: 0 0 200px;
+  flex: 0 0 300px;
   height: auto;
   background: none;
   padding: 0;
